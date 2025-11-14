@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://gq26gdg6jtcb"]
+
+[ext_resource type="Script" uid="uid://dvas3fn4xmfcm" path="res://scripts/main/main.gd" id="1_e1nwt"]
+[ext_resource type="PackedScene" uid="uid://bwu3bgteaeh4e" path="res://scenes/state_machine/state_machine.tscn" id="1_m2aix"]
+[ext_resource type="Script" uid="uid://sw6g6c8rgfkn" path="res://scripts/components/state_machines/game_state_machine/game_states/game_play_state.gd" id="3_o63cm"]
+[ext_resource type="PackedScene" uid="uid://dxj2i1tfqf7ka" path="res://scenes/ui/game_ui/game_ui.tscn" id="5_6q06x"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_e1nwt")
+
+[node name="GameplayStateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("1_m2aix")]
+initial_state = NodePath("GamePlayState")
+
+[node name="GamePlayState" type="Node" parent="GameplayStateMachine"]
+script = ExtResource("3_o63cm")
+
+[node name="GameUI" parent="." instance=ExtResource("5_6q06x")]
+
+[editable path="GameplayStateMachine"]
