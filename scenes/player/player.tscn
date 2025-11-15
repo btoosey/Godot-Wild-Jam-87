@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf8xmhuk5gllv"]
+
+[ext_resource type="Texture2D" uid="uid://cy8lq4p3qyksi" path="res://assets/sprites/player/placeholder_sprite.png" id="1_8afob"]
+[ext_resource type="Script" uid="uid://dewvf6lu44hf3" path="res://scripts/components/player/movement/click_to_move.gd" id="1_dovo2"]
+
+[node name="Player" type="Node2D"]
+
+[node name="MovementComponents" type="Node" parent="."]
+
+[node name="ClickToMove" type="Node" parent="MovementComponents"]
+script = ExtResource("1_dovo2")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("1_8afob")
