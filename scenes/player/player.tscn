@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf8xmhuk5gllv"]
+[gd_scene load_steps=4 format=3 uid="uid://cf8xmhuk5gllv"]
 
 [ext_resource type="Texture2D" uid="uid://cy8lq4p3qyksi" path="res://assets/sprites/player/placeholder_sprite.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://dewvf6lu44hf3" path="res://scripts/components/player/movement/click_to_move.gd" id="1_dovo2"]
+[ext_resource type="Script" uid="uid://dir0i8wd7g1fh" path="res://scripts/components/player/movement/a_star_pathfinder_component.gd" id="2_gmlin"]
 
 [node name="Player" type="Node2D"]
 
@@ -9,6 +10,9 @@
 
 [node name="ClickToMove" type="Node" parent="MovementComponents"]
 script = ExtResource("1_dovo2")
+
+[node name="AStarPathfinderComponent" type="Node" parent="MovementComponents"]
+script = ExtResource("2_gmlin")
 
 [node name="Visuals" type="Node2D" parent="."]
 
