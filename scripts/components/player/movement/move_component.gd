@@ -4,6 +4,8 @@ extends Node
 @export var character: Node2D = null
 @export var velocity_component: VelocityComponent = null
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $"../../Visuals/AnimatedSprite2D"
+
 var can_move: bool = true
 var current_direction
 
@@ -23,6 +25,10 @@ var key_up := false
 var key_down := false
 var key_left := false
 var key_right := false
+
+
+func _ready() -> void:
+	animated_sprite_2d.play("right")
 
 
 func _process(_delta: float) -> void:
@@ -61,20 +67,28 @@ func _move() -> void:
 	match current_direction:
 		direction.UP:
 			character.velocity = Vector2(0, -velocity_component.max_speed)
+			animated_sprite_2d.play("up")
 		direction.DOWN:
 			character.velocity = Vector2(0, velocity_component.max_speed)
+			animated_sprite_2d.play("down")
 		direction.LEFT:
 			character.velocity = Vector2(-velocity_component.max_speed, 0)
+			animated_sprite_2d.play("left")
 		direction.RIGHT:
 			character.velocity = Vector2(velocity_component.max_speed, 0)
+			animated_sprite_2d.play("right")
 		direction.UP_LEFT:
 			character.velocity = _cartesian_to_isometric(Vector2(-velocity_component.max_speed, 0))
+			animated_sprite_2d.play("up_left")
 		direction.UP_RIGHT:
 			character.velocity = _cartesian_to_isometric(Vector2(0, -velocity_component.max_speed))
+			animated_sprite_2d.play("up_right")
 		direction.DOWN_LEFT:
 			character.velocity = _cartesian_to_isometric(Vector2(0, velocity_component.max_speed))
+			animated_sprite_2d.play("down_left")
 		direction.DOWN_RIGHT:
 			character.velocity = _cartesian_to_isometric(Vector2(velocity_component.max_speed, 0))
+			animated_sprite_2d.play("down_right")
 		direction.IDLE: character.velocity = Vector2.ZERO
 
 	character.move_and_slide()

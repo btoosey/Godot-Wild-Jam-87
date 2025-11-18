@@ -40,8 +40,5 @@ tile_set = SubResource("TileSet_ow5a4")
 [node name="Player" parent="." instance=ExtResource("6_ow5a4")]
 position = Vector2(16, 8)
 
-[node name="VelocityComponent" parent="Player/MovementComponents" index="0"]
-max_speed = 50.0
-
 [editable path="GameplayStateMachine"]
 [editable path="Player"]
