@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cf8xmhuk5gllv"]
+[gd_scene load_steps=22 format=3 uid="uid://cf8xmhuk5gllv"]
 
 [ext_resource type="Texture2D" uid="uid://dvie2w83wlaum" path="res://assets/sprites/player/spritesheet_01.png" id="3_gmlin"]
 [ext_resource type="Script" uid="uid://ct6wdcd7fdkjc" path="res://scripts/components/player/movement/velocity_component.gd" id="3_lvxji"]
@@ -159,6 +159,9 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
+radius = 5.0
+
 [node name="Player" type="CharacterBody2D"]
 
 [node name="MovementComponents" type="Node" parent="."]
@@ -177,9 +180,12 @@ velocity_component = NodePath("../VelocityComponent")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals"]
 sprite_frames = SubResource("SpriteFrames_8ydkj")
 animation = &"right"
-frame_progress = 0.68705
+frame_progress = 0.151622
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gmlin")
