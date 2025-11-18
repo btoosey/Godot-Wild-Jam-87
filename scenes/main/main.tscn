@@ -38,15 +38,10 @@ tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA
 tile_set = SubResource("TileSet_ow5a4")
 
 [node name="Player" parent="." instance=ExtResource("6_ow5a4")]
+position = Vector2(16, 8)
 
-[node name="ClickToMove" parent="Player/MovementComponents" index="0" node_paths=PackedStringArray("tilemap_layer_world", "a_star_pathfinder_component")]
-tilemap_layer_world = NodePath("../../../World/OceanLayer")
-enabled = true
-a_star_pathfinder_component = NodePath("../AStarPathfinderComponent")
-
-[node name="AStarPathfinderComponent" parent="Player/MovementComponents" index="1" node_paths=PackedStringArray("tilemap_layer_ocean", "character")]
-tilemap_layer_ocean = NodePath("../../../World/OceanLayer")
-character = NodePath("../..")
+[node name="VelocityComponent" parent="Player/MovementComponents" index="0"]
+max_speed = 50.0
 
 [editable path="GameplayStateMachine"]
 [editable path="Player"]

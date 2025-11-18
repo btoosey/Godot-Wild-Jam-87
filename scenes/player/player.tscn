@@ -1,18 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://cf8xmhuk5gllv"]
 
 [ext_resource type="Texture2D" uid="uid://cy8lq4p3qyksi" path="res://assets/sprites/player/placeholder_sprite.png" id="1_8afob"]
-[ext_resource type="Script" uid="uid://dewvf6lu44hf3" path="res://scripts/components/player/movement/click_to_move.gd" id="1_dovo2"]
-[ext_resource type="Script" uid="uid://dir0i8wd7g1fh" path="res://scripts/components/player/movement/a_star_pathfinder_component.gd" id="2_gmlin"]
+[ext_resource type="Script" uid="uid://ct6wdcd7fdkjc" path="res://scripts/components/player/movement/velocity_component.gd" id="3_lvxji"]
+[ext_resource type="Script" uid="uid://8vyhbbny5n81" path="res://scripts/components/player/movement/move_component.gd" id="4_p47bc"]
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="CharacterBody2D"]
 
 [node name="MovementComponents" type="Node" parent="."]
 
-[node name="ClickToMove" type="Node" parent="MovementComponents"]
-script = ExtResource("1_dovo2")
+[node name="VelocityComponent" type="Node" parent="MovementComponents"]
+script = ExtResource("3_lvxji")
+max_speed = 5.0
+acceleration = 2.0
 
-[node name="AStarPathfinderComponent" type="Node" parent="MovementComponents"]
-script = ExtResource("2_gmlin")
+[node name="MoveComponent" type="Node" parent="MovementComponents" node_paths=PackedStringArray("character", "velocity_component")]
+script = ExtResource("4_p47bc")
+character = NodePath("../..")
+velocity_component = NodePath("../VelocityComponent")
 
 [node name="Visuals" type="Node2D" parent="."]
 
